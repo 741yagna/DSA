@@ -1,0 +1,23 @@
+#include <stdio.h>
+int rev(int arr[100],int n)
+{
+    int i;
+    printf("enter the reverse of array");
+    for(i=n-1;i>=0;i--)
+    printf("%d\t",arr[i]);
+}
+int main()
+{
+    int i,n,arr[100];
+    printf("enter the size of an array");
+    scanf("%d",&n);
+    printf("enter the elements of array");
+    for(i=0;i<n;i++)
+    {
+        scanf("%d",&arr[i]);
+    }
+    rev(arr,n);
+}
+    
+    
+    
