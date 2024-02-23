@@ -1,0 +1,32 @@
+#include<stdio.h>
+int search(int[ ],int);
+int search(int arr[ ],int n)
+{
+    int x,i;
+    printf("enter the searching element");
+    scanf("%d",&x);
+    for(i=0;i<n;i++)
+    {
+        if(arr[i]==x)
+        {
+          printf("searching element is found at %d",i);
+          break;
+        }
+    }
+    if(x==0)
+    printf("element is not found");
+}
+int main()
+{
+    int i,arr[100],n;
+    printf("enter the size");
+    scanf("%d",&n);
+    printf("enter the elements");
+    for(i=0;i<n;i++)
+    {
+        scanf("%d",&arr[i]);
+    }
+    search(arr,n);
+}
+    
+    
