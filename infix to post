@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include<stdlib.h>
 #define MAX 100
-char stack[MAX];
+char stack[MAX]
 char infix[100],postfix[100];
 
 int top=-1;
