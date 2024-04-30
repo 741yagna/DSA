@@ -1,0 +1,35 @@
+#include <stdio.h>
+#include<stdlib.h>
+#define dq[MAX]
+int front=-1;
+int rear=-1;
+void insertfront(int d){
+if(front==0&&rear=MAX-1){
+    printf("Queue is full\n");
+    return;
+}
+if(front==0){
+    printf("insertionis nnot possible");
+    return;
+}
+if(front==-1){
+    front=rear=0;
+}
+else{
+    front=front-1;
+}
+dq[front]=d;
+void display(){
+    int i;
+    for(i=front;i<=rear;i++)
+    printf("%d",dq[i]);
+}
+printf("\n");
+}
+int main()
+{
+    insertfront(10);
+    insertfront(20);
+    display();
+}
+
