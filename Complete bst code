@@ -1,0 +1,85 @@
+#include<stdio.h>
+#include<stdlib.h>
+struct node {
+	int data;
+	struct node *left;
+	struct node *right;
+};
+struct node* createNode(int d){
+	struct node *temp = (struct node *)malloc(sizeof(struct node *));
+	temp->left=NULL;
+	temp->right=NULL;
+	temp->data=d;
+	return temp;
+}
+struct node* insert(struct node *root,int d){
+	if(root==NULL){
+		root = createNode(d);
+	} else {
+		if(d<root->data){
+			root->left = insert(root->left,d);
+		} else if(d>root->data){
+			root->right=insert(root->right,d);
+	}
+	}
+	return root;
+}
+void inOrder(struct node *root){
+	if(root->left!=NULL)
+		inOrder(root->left);
+	printf("%d ",root->data);
+	if(root->right!=NULL)
+		inOrder(root->right);
+}
+struct node *findmin(struct node *root){
+	if(root==NULL){
+		return root;
+	}
+	while(root->left!=NULL){
+		root=root->left;
+	}
+	return root;
+}
+
+struct node* delete(struct node *root,int key){
+	if(root==NULL)
+		return root;
+	else if(key<root->data)
+		root->left=delete(root->left,key);
+	else if(key>root->data)
+		root->right=delete(root->right,key);
+	else {
+	if(root->left==NULL && root->right==NULL) {
+		free(root);
+		root=NULL;
+	} else if(root->left==NULL) {
+		struct node *temp=root;
+		root=root->right;
+		free(temp);
+	} else if(root->right==NULL) {
+		struct node *temp=root;
+		root=root->left;
+		free(temp);
+	} else {
+		struct node *temp=findmin(root->right);
+		root->data=temp->data;
+		root->right=delete(root->right,temp->data);
+	}
+ }
+	return root;
+}
+int main(){
+	struct node *root=NULL;
+	root = insert(root, 50);
+    root = insert(root, 30);
+    root = insert(root, 20);
+    root = insert(root, 40);
+    root = insert(root, 70);
+    root = insert(root, 60);
+    root = insert(root, 80);
+    root = insert(root, 35);
+	inOrder(root);
+	root=delete(root,35);
+	printf("\n");
+	inOrder(root);
+}
